@@ -46,7 +46,7 @@ from .w8a8_mxfp8 import AscendW8A8MXFP8DynamicLinearMethod
 from .w8a8_pdmix import AscendW8A8PDMixFusedMoeMethod, AscendW8A8PDMixLinearMethod
 from .w8a8_static import AscendW8A8LinearMethod
 from .w8a16 import AscendW8A16LinearMethod
-
+from .hifloat8 import AscendW8A8Hifloat8DynamicLinearMethod
 
 def is_mx_quant_type(instance: Any) -> bool:
     """Checks if the quantization method is a microscaling (MX) type."""
@@ -79,4 +79,5 @@ __all__ = [
     "AscendW4A4FlatQuantDynamicLinearMethod",
     "AscendW4A4LaosDynamicLinearMethod",
     "AscendFAQuantAttentionMethod",
+    "AscendW8A8Hifloat8DynamicLinearMethod"
 ]
