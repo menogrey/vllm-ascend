@@ -104,11 +104,15 @@ class AscendW8A8Hifloat8DynamicLinearMethod(AscendLinearScheme):
         # transform weight to HiFloat8 format
         weight = layer.weight.data
 
-        array = weight.cpu().to(torch.float32).numpy().astype(hifloat8)
+        # array = weight.cpu().to(torch.float32).numpy().astype(hifloat8)
 
-        new_tensor = torch.from_numpy(array.astype(np.float16)).to(weight.device)
+        # new_tensor = torch.from_numpy(array.astype(np.float16)).to(weight.device)
 
+        # replace_parameter(layer, "weight", new_tensor)
+
+        # layer.weight.data = layer.weight.data.transpose(0, 1)
+
+
+        new_tensor = torch_npu.HiFloat8Tensor.to_hifloat8(layer.weight.data)
+        new_tensor = new_tensor.transpose(0, 1)
         replace_parameter(layer, "weight", new_tensor)
-
-        layer.weight.data = layer.weight.data.transpose(0, 1)
-
