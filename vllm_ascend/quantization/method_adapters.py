@@ -65,7 +65,9 @@ class AscendLinearMethod(LinearMethodBase):
 
         for weight_name, weight_param in weight_dict.items():
             param = torch.nn.Parameter(weight_param, requires_grad=False)
-            set_weight_attrs(param, {"input_dim": 1, "output_dim": 0})
+            # TEMP: AMCT input/output dim is opposite to modelslim.
+            # set_weight_attrs(param, {"input_dim": 1, "output_dim": 0})
+            set_weight_attrs(param, {"input_dim": 0, "output_dim": 1})
 
             # Set packing attributes if the weight is packed
             if packed_dim is not None and packed_factor is not None:

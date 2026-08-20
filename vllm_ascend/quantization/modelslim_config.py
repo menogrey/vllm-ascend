@@ -1029,6 +1029,11 @@ class AscendModelSlimConfig(QuantizationConfig):
             if "weight_packed" in k:
                 new_k = k.replace("weight_packed", "weight")
                 extra_quant_dict[new_k] = self.quant_description[k]
+
+            # TEMP: AMCT quantization use "quantized_weight", not need for modelslim
+            if "quantized_weight" in k:
+                new_k = k.replace("quantized_weight", "weight")
+                extra_quant_dict[new_k] = self.quant_description[k]
         self.quant_description.update(extra_quant_dict)
 
     def _add_kvcache_quant_metadata(self):

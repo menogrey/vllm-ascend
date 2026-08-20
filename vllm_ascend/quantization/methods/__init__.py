@@ -45,6 +45,7 @@ from .base import (
 
 # Import all scheme classes for external access
 from .fp8 import AscendW4A8MXFPDSDynamicFusedMoEMethod, AscendW8A8MXFP8DSDynamicLinearMethod
+from .hif8 import AscendHiF8LinearMethod
 from .kv_c8 import AscendFAQuantAttentionMethod
 
 # Import registry functions
